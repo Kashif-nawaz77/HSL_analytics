@@ -1,0 +1,2 @@
+#to download txt files for data
+https://api.digitransit.fi/routing-data/v2/hsl/HSL.zip

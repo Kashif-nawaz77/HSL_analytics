@@ -1,0 +1,9 @@
+airflow/logs/*
+*.pdf
+#*.txt
+airflow/dags/__pycache__/*
+airflow/dags/plugins/*
+.env
+/hsl_data/*
+*.zip
+*.json
