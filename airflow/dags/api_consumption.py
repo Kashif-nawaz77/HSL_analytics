@@ -4,36 +4,16 @@ from airflow.operators.python import PythonOperator
 from airflow.models.variable import Variable
 from datetime import datetime,time
 import urllib
+from dotenv import load_dotenv
 
 import requests
 import json
 
+# Load environment variables from .env file
+load_dotenv()
 
 def api_request():
-    
-    # url = "https://api.digitransit.fi/timetables/v1/hsl/"
-
-    # hdr ={
-    # # Request headers
-    # 'Cache-Control': 'no-cache',
-    # 'digitransit-subscription-key': '6a3f029fde0f430c8c468dc2c715f095',
-    # }
-
-    # req = urllib.request.Request(url, headers=hdr)
-    
-    # req.get_method = lambda: 'GET'
-    # response = urllib.request.urlopen(req)
-    # print(response.getcode())
-    # print(response.read())
-    
-    
-    # headers = {"content-type": "application/json"}
-    # payload = json.dumps({ "name": "Apple AirPods", "data": { "color": "white", "generation": "3rd", "price": 135}})
-    # requestUrl = "https://api.digitransit.fi/timetables/v1/hsl"
-    # r = requests.get(requestUrl, headers=headers)
-    # print(r.content)
-    
-    
+        
     try:
         # url = "https://api.digitransit.fi/realtime/trip-updates/v1/hsl/"
         url = "https://api.digitransit.fi/routing-data/v2/hsl"
@@ -41,7 +21,7 @@ def api_request():
         hdr ={
         # Request headers
         'Cache-Control': 'no-cache',
-        'digitransit-subscription-key': '6a3f029fde0f430c8c468dc2c715f095',
+        'digitransit-subscription-key': os.getenv('DIGITRANSIT_API_KEY', ''),
         }
 
         req = urllib.request.Request(url, headers=hdr)
